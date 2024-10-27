@@ -15,7 +15,7 @@ const RegisterPage = () => {
     }
 
     return (
-        <div style={{ textAlign: "center", marginTop: "50px" }}>
+        <div>
             <h1>Registro de Usuario</h1>
 
             <form onSubmit={handleSubmit}>

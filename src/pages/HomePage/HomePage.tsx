@@ -1,24 +1,17 @@
-import { useAuth } from "@context/AuthProvider";
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
 
 const HomePage = () => {
-  const { user, createUser } = useAuth()
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
   const navigate = useNavigate()
 
   const handleSignIn = () => {
-    navigate('/chat') // Llamamos a la función de logout
+    navigate('/chat') 
   };
 
   const handleRegister = () => {
-    navigate('/login')
-  }
-
-  const handleSubmit = (e: React.FormEvent) => {
-    e.preventDefault()
-    createUser(email, password)
+    navigate('/register')
   }
 
   return (
@@ -27,7 +20,7 @@ const HomePage = () => {
         <h1>Homepage</h1>
       </div>
 
-      <div style={{ textAlign: "center", marginTop: "50px" }}>
+      <div>
       <h1>Bienvenido a la App</h1>
 
       <h2>Iniciar Sesión</h2>

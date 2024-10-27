@@ -3,7 +3,7 @@ import { createBrowserRouter, RouterProvider } from "react-router-dom"
 import PrivateRoutes from "@components/PrivateRoutes"
 import HomePage from "./pages/HomePage/HomePage"
 import RegisterPage from "./pages/RegisterPage/RegisterPage"
-import Chat from "./pages/ChatPage/ChatPage"
+import Chat from "@components/Chat/Chat"
 
 function App() {
     const router = createBrowserRouter([

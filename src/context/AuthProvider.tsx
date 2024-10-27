@@ -1,5 +1,6 @@
-import { auth } from "@services/firebase/baseConfig";
+import { auth, db } from "@services/firebase/baseConfig";
 import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, User } from "firebase/auth";
+import { doc, setDoc } from "firebase/firestore";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
 interface IAuthContext {
@@ -29,6 +30,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
             // Send verification email to the user
             await sendEmailVerification(user);
             console.log("Correo de verificación enviado a:", email);
+
+            // Save user in firestore
+            await setDoc(doc(db, "users", user.uid), {
+                uid: user.uid,
+                email: user.email,
+            });
+            console.log("Usuario registrado y guardado en Firestore:", user);
 
             // The user has successfully registered
             setUser(user)
