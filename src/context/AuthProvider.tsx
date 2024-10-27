@@ -29,15 +29,13 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
 
             // Send verification email to the user
             await sendEmailVerification(user);
-            console.log("Correo de verificación enviado a:", email);
 
             // Save user in firestore
             await setDoc(doc(db, "users", user.uid), {
                 uid: user.uid,
                 email: user.email,
             });
-            console.log("Usuario registrado y guardado en Firestore:", user);
-
+            
             // The user has successfully registered
             setUser(user)
         } catch (error) {
