@@ -11,6 +11,7 @@ export default defineConfig({
       '@services': path.resolve(__dirname, './src/services'),
       '@interfaces': path.resolve(__dirname, './src/interfaces'),
       '@context': path.resolve(__dirname, './src/context'),
+      '@pages': path.resolve(__dirname, './src/pages'),
     }
   }
 })

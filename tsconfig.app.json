@@ -26,7 +26,8 @@
       "@components/*": ["src/components/*"],
       "@services/*": ["src/services/*"],
       "@interfaces/*": ["src/interfaces/*"],
-      "@context/*": ["src/context/*"]
+      "@context/*": ["src/context/*"],
+      "@pages/*": ["src/pages/*"]
     }
   },
   "include": ["src"]

@@ -1,0 +1,96 @@
+.container {
+    font-family: var(--montserrat);
+    height: 100vh;
+}
+
+.header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem;
+    gap: 1.5rem;
+    font-weight: 900;
+    font-size: 2rem;
+
+}
+
+.header img {
+    width: 90px;
+    height: 90px;
+}
+
+.login {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    max-width: 400px;
+    margin: 50px auto;
+    padding: 2.5rem;
+    border-radius: 10px;
+    box-shadow: 6px 6px 15px rgba(2, 16, 63, 0.735);
+    background-color: var(--primary-color);
+}
+
+.login h2 {
+    text-align: center;
+    margin-bottom: 1rem;
+    color: var(--white-color);
+}
+
+.login label {
+    font-size: 1.5rem;
+    padding: 1rem;
+    color: var(--soft-gray-color);
+}
+
+.login input {
+    background-color: transparent;
+    border-top: none;
+    border-right: none;
+    margin: 0.8rem;
+    color: var(--white-color);
+}
+
+.login input:focus {
+    border-color: var(--optional-color); 
+    outline: none;
+}
+
+.login input::placeholder{
+    color: var(--soft-gray-color);
+}
+
+.signin {
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+    margin: 0.7rem 5rem;
+    background-color: var(--optional-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.signin:hover {
+    background-color: var(--secondary-color);
+}
+
+.login p {
+    text-align: center;
+    margin: 1rem 0;
+    color: var(--soft-gray-color);
+}
+
+.register {
+    background-color: transparent;
+    color: var(--optional-color);
+    border: none;
+}
+
+.register:last-of-type:hover {
+    text-decoration: underline;
+    color: var(--white-color);
+}
