@@ -39,7 +39,7 @@ const HomePage = () => {
               />
             </div>
             <div>
-              <label><RiLockPasswordFill></RiLockPasswordFill></label>
+              <label><RiLockPasswordFill/></label>
               <input
                 type="password"
                 placeholder="Contraseña"
