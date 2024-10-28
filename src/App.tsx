@@ -4,6 +4,7 @@ import PrivateRoutes from "@components/PrivateRoutes"
 import HomePage from "./pages/HomePage/HomePage"
 import RegisterPage from "./pages/RegisterPage/RegisterPage"
 import Chat from "@components/Chat/Chat"
+import { NotFoundPage } from "@pages/NotFoundPage/NotFoundPage"
 
 function App() {
     const router = createBrowserRouter([
@@ -21,17 +22,21 @@ function App() {
             children: [
                 {
                     path: '',
-                    element: <Chat/>
+                    element: <Chat />
                 },
             ]
 
-        }
-        
+        },
+        {
+            path: '*',
+            element: <NotFoundPage />
+        },
+
     ])
 
     return (
         <AuthProvider>
-            <RouterProvider router={router} />        
+            <RouterProvider router={router} />
         </AuthProvider>
     )
 }
