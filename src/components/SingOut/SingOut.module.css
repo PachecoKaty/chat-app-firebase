@@ -1,0 +1,16 @@
+.singOut {
+    font-weight: 600;
+    padding: 0.7rem 1rem;
+    margin: 0.7rem 5rem;
+    background-color: var(--primary-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.singOut:hover {
+    background-color: var(--secondary-color);
+}

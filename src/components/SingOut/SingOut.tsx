@@ -1,5 +1,6 @@
 import { useAuth } from "@context/AuthProvider"
 import { useNavigate } from "react-router-dom"
+import styles from "@components/SingOut/SingOut.module.css"
 
 export const SingOut = () => {
     const {signOut} = useAuth()
@@ -14,7 +15,7 @@ export const SingOut = () => {
     }
     return (
         <div>
-            <button onClick={handleSingOut}>Cerrar sesión</button>
+            <button onClick={handleSingOut} className={styles.singOut}>Cerrar sesión</button>
         </div>
     )
 }

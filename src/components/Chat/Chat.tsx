@@ -4,6 +4,7 @@ import { User } from "firebase/auth"
 import { auth, db } from "@services/firebase/baseConfig"
 import { addDoc, collection, onSnapshot, orderBy, query } from "firebase/firestore"
 import { SingOut } from "@components/SingOut/SingOut"
+import styles from "@components/Chat/Chat.module.css"
 
 const Chat: React.FC = () => {
     const [messages, setMessages] = useState<Message[]>([]);
@@ -42,7 +43,6 @@ const Chat: React.FC = () => {
 
         // Clear the message and recipient field.
         setNewMessage('');
-        setRecipient('');
     }
 
     const filteredMessages = selectedRecipient
@@ -60,46 +60,68 @@ const Chat: React.FC = () => {
     return (
         <>
             <div>
-                <h2>Chat</h2>
-                <SingOut></SingOut>
-                <div>
-                    <h3>Contactos</h3>
-                    <ul>
-                        {uniqueRecipients.map((rec) => (
-                            <li key={rec} onClick={() => handleRecipientClick(rec)}>
-                                {rec}
-                            </li>
-                        ))}
-                    </ul>
+                <div className={styles.header}>
+                    <div className={styles.logo}>
+                        <h1>ChatMate</h1>
+                        <img src="public\logo-chatmate.svg" alt="ChatMate Logo" />
+                    </div>
+                    <SingOut></SingOut>
                 </div>
 
-                <div>
-                    {filteredMessages.length > 0 ? (
-                        filteredMessages.map((msg) => (
-                            <div key={msg.id}>
-                                <strong>{msg.sender} → {msg.receptor}:</strong> {msg.message}
-                            </div>
-                        ))
-                    ) : (
-                        <div>No hay mensajes para este contacto.</div>
-                    )}
+                <div className={styles.chatSection}>
+                    <div className={styles.contact}>
+                        <h3>Contactos</h3>
+                        <ul>
+                            {uniqueRecipients.map((rec) => (
+                                <li key={rec} 
+                                    onClick={() => handleRecipientClick(rec)}
+                                    tabIndex={0}
+                                    onKeyDown={(e) => {
+                                        if (e.key === 'Enter') {
+                                            handleRecipientClick(rec);
+                                        }
+                                    }}
+                                >
+                                    {rec}
+                                </li>
+                            ))}
+                        </ul>
+                    </div>
+
+                    <div>
+                        <div className={styles.messages}>
+                            {filteredMessages.length > 0 ? (
+                                filteredMessages.map((msg) => (
+                                    <div key={msg.id}
+                                    className={msg.sender === user.email ? styles.senderMessage : styles.receiverMessage}
+                                    >
+                                        <strong>{msg.message}</strong>
+                                        <small className={styles.senderName}>{msg.sender}</small> 
+                                    </div>
+                                ))
+                            ) : (
+                                <div>No hay mensajes para este contacto.</div>
+                            )}
+                        </div>
+
+                        <form onSubmit={handleSubmit} className={styles.messageForm}>
+                            <input
+                                type="text"
+                                value={recipient}
+                                onChange={(e) => setRecipient(e.target.value)}
+                                placeholder="Contacto"
+                            />
+                            <input
+                                type="text"
+                                value={newMessage}
+                                onChange={(e) => setNewMessage(e.target.value)}
+                                placeholder="Escribe un mensaje..."
+                            />
+                            <button type="submit"className={styles.sendButton}>Enviar</button>
+                        </form>
+                    </div>
                 </div>
 
-                <form onSubmit={handleSubmit}>
-                    <input
-                        type="text"
-                        value={recipient}
-                        onChange={(e) => setRecipient(e.target.value)}
-                        placeholder="Contacto"
-                    />
-                    <input
-                        type="text"
-                        value={newMessage}
-                        onChange={(e) => setNewMessage(e.target.value)}
-                        placeholder="Escribe un mensaje..."
-                    />
-                    <button type="submit">Enviar</button>
-                </form>
             </div>
         </>
     );

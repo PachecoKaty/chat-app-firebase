@@ -1,0 +1,134 @@
+.header {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    padding: 0 4rem;
+    font-family: var(--montserrat);
+}
+
+.header img {
+    width: 90px;
+    height: 90px;
+}
+
+.logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin: 1.5rem;
+    gap: 1.5rem;
+    font-weight: 900;
+    font-size: 2rem;
+}
+
+.chatSection {
+    display: flex;
+    justify-content: space-around;
+}
+
+.chatSection li {
+    text-align: justify;
+    list-style: none;
+    padding: 1rem;
+    border-radius: 8px;
+    transition: background-color 0.3s, color 0.3s;
+    cursor: pointer;
+}
+
+.chatSection li:hover {
+    color: var(--white-color);
+    background-color: var(--optional-color);
+}
+
+.chatSection li:focus, 
+.chatSection li:active {
+    outline: none; 
+    color: var(--white-color);
+    background-color: var(--optional-color);
+}
+
+.contact {
+    font-family: var(--montserrat);
+    font-size: 1.5rem;
+    font-weight: 400;
+    max-width: 400px;
+    max-height: 600px;
+    padding: 2.5rem;
+    border-radius: 10px;
+    color: var(--soft-gray-color);
+    background-color: var(--primary-color);
+}
+
+.contact h3 {
+    text-align: center;
+}
+
+.messages {
+    font-family: var(--monospace);
+    font-size: 1.2rem;
+    padding: 2.5rem;
+    width: 600px;
+    max-width: 600px;
+    max-height: 600px;
+    border-radius: 8px;
+    box-shadow: 6px 6px 15px rgba(2, 16, 63, 0.735);
+}
+
+.senderMessage {
+    background-color: var(--primary-color);
+    color: var(--white-color); 
+    padding: 0.5rem; 
+    border-radius: 8px; 
+    margin-bottom: 0.5rem; 
+}
+
+.receiverMessage {
+    background-color: var(--secondary-color);
+    color: var(--white-color); 
+    padding: 0.5rem; 
+    border-radius: 8px; 
+    margin-bottom: 0.5rem; 
+}
+
+.senderName {
+    display: block;
+    margin-top: 0.3rem;
+    text-align: end;
+}
+
+.messageForm {
+    display: flex;
+    justify-content: center;
+    padding: 1rem;
+    font-family: var(--montserrat);
+}
+
+.messageForm input {
+    background-color: transparent;
+    border-color: var(--primary-color);
+    border: none;
+    border-bottom: 2px solid var(--primary-color);
+    margin: 0.8rem;
+}
+
+.messageForm input:focus {
+    border-color: var(--optional-color); 
+    outline: none;
+}
+
+.sendButton {
+    font-weight: 600;
+    padding: 0.4rem 1rem;
+    margin: 0.7rem;
+    background-color: var(--optional-color);
+    color: var(--white-color);
+    border: none;
+    border-radius: 8px;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.3s;
+}
+
+.sendButton:hover {
+    background-color: var(--secondary-color);
+}
