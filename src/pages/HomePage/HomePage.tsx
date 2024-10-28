@@ -1,16 +1,24 @@
 import { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import styles from "@pages/HomePage/HomePage.module.css";
+import { useAuth } from "@context/AuthProvider";
 import { FaCircleUser } from "react-icons/fa6";
 import { RiLockPasswordFill } from "react-icons/ri";
+import styles from "@pages/HomePage/HomePage.module.css";
 
 const HomePage = () => {
   const [email, setEmail] = useState("")
   const [password, setPassword] = useState("")
+  const { signIn } = useAuth()
   const navigate = useNavigate()
 
-  const handleSignIn = () => {
-    navigate('/chat')
+  const handleSignIn = async (e: React.FormEvent) => {
+    e.preventDefault()
+    try {
+      await signIn(email, password)
+      navigate('/chat')
+    } catch (err) {
+      console.log("Error: ",err );
+    }
   };
 
   const handleRegister = () => {
@@ -39,7 +47,7 @@ const HomePage = () => {
               />
             </div>
             <div>
-              <label><RiLockPasswordFill/></label>
+              <label><RiLockPasswordFill /></label>
               <input
                 type="password"
                 placeholder="Contraseña"

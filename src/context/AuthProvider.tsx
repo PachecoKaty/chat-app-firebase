@@ -1,5 +1,5 @@
 import { auth, db } from "@services/firebase/baseConfig";
-import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, User } from "firebase/auth";
+import { createUserWithEmailAndPassword, onAuthStateChanged, sendEmailVerification, signInWithEmailAndPassword, User, signOut as firebaseSignOut } from "firebase/auth";
 import { doc, setDoc } from "firebase/firestore";
 import { createContext, ReactNode, useContext, useEffect, useState } from "react";
 
@@ -36,8 +36,6 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
                 email: user.email,
             });
             
-            // The user has successfully registered
-            setUser(user)
         } catch (error) {
             console.error("Error creating user:", error)
         }
@@ -53,9 +51,9 @@ export const AuthProvider = ({ children }: { children: ReactNode }) => {
         }
     }
 
-    const signOut = async (auth?: unknown) => {
+    const signOut = async () => {
         try {
-            await signOut(auth)
+            await firebaseSignOut(auth)
         } catch (error) {
             console.error("Logout error:", error)
         }

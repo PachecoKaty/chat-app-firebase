@@ -13,7 +13,7 @@ const RegisterPage = () => {
 
     const handleSubmit = async (e: React.FormEvent) => {
         e.preventDefault()
-        createUser(email, password)
+        await createUser(email, password)
         navigate('/chat')
     }
 
@@ -21,7 +21,7 @@ const RegisterPage = () => {
         <div className={styles.container}>
             <div className={styles.header}>
                 <h1>ChatMate</h1>
-                <img src="public\logo-chatmate.svg" alt="ChatMate Logo"/>
+                <img src="public\logo-chatmate.svg" alt="ChatMate Logo" />
             </div>
 
             <div className={styles.register}>
